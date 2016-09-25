@@ -54,16 +54,19 @@ public class TrataCliente extends Thread{
 		    client.close();  
 		    
 		  //implementação para tocar a musica
-            JLayer l = new JLayer();
-			l.execeutarMidia(fileName);
+            /*JLayer l = new JLayer();
+			l.execeutarMidia(fileName);*/
 			
-			File file = new File("");
-			URI fileUri = file.toURI();
+			String caminho = fileName;
 			
-			//Runtime.getRuntime().exec("cmd /c start \"%programfiles%\\Windows Media Player\\wmplayer.exe\" \"C:/Users/Evandro/workspace/SocketInterface\\" + fileName);
-			//Runtime.getRuntime().exec("cmd /c start \"%programfiles%\\Windows Media Player\\wmplayer.exe\"" + this.getClass().getResource(fileName));
-			Runtime.getRuntime().exec("cmd /c start \"%programfiles%\\Windows Media Player\\wmplayer.exe\"" + fileUri + fileName);
-			System.out.println(fileUri);
+			File fileN = new File(caminho);	
+			
+//			ProcessBuilder pb = new ProcessBuilder("C:\\Program Files\\VideoLAN\\VLC\\vlc.exe",fileN.getAbsolutePath());
+			
+			Runtime.getRuntime().exec("cmd /c start \"%programfiles%\\VideoLAN\\VLC\\vlc.exe\" \"" + fileN.getAbsolutePath());
+									
+//			Runtime.getRuntime().exec("cmd /c start \"%programfiles%\\Windows Media Player\\wmplayer.exe\" \"" + fileN.getAbsolutePath());
+			
 			
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Algum erro Ocorreu");
@@ -75,3 +78,4 @@ public class TrataCliente extends Thread{
 	
 }
 
+//Runtime.getRuntime().exec("cmd /c start \"%programfiles%\\Windows Media Player\\wmplayer.exe\" \"C:/Users/Evandro/workspace/SocketInterface\\" + fileName);
